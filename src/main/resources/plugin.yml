@@ -1,0 +1,5 @@
+name: Luxeria
+version: '1.0-SNAPSHOT'
+author: 'sin'
+main: codes.sinister.luxeria.plugin.LuxeriaPlugin
+api-version: '1.21'
