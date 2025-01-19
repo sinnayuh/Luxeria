@@ -1,4 +1,4 @@
-package codes.sinister.luxeria.modal.spawner.listener;
+package codes.sinister.luxeria.modal.debug.listener;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;

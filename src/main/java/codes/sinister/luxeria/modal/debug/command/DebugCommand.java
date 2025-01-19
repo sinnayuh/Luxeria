@@ -1,5 +1,6 @@
-package codes.sinister.luxeria.modal.spawner.command;
+package codes.sinister.luxeria.modal.debug.command;
 
+import codes.sinister.luxeria.modal.debug.listener.PhantomListener;
 import codes.sinister.luxeria.modal.util.TranslateUtil;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -10,26 +11,34 @@ import revxrsal.commands.annotation.DefaultFor;
 import revxrsal.commands.annotation.Subcommand;
 import revxrsal.commands.bukkit.annotation.CommandPermission;
 
-@Command({"increasedspawners", "inc"})
+@Command({"debug"})
 @CommandPermission("luxeria.admin")
-public record SpawnerCommand() {
-    @DefaultFor({"increasedspawners", "inc"})
+public record DebugCommand() {
+    @DefaultFor({"debug"})
     public void onBaseCommand(Player sender) {
         sender.sendMessage(TranslateUtil.translate(
-                "&lilac&lLuxeria Spawners Help",
-                "&lilac/inc help &7- Shows this help menu",
-                "&lilac/inc getradius &7- Gets the spawner range",
-                "&lilac/inc setradius <int> &7- Sets the spawner range"
+                "&lilac&lLuxeria Debug Help",
+                "&lilac/debug &7- Shows the this help menu",
+                "&lilac/debug spawner &7- Shows the spawner help menu",
+                "&lilac/debug phantom &7- Enable/Disable Phantom Spawning"
         ));
     }
 
-    @Subcommand({"help"})
+    @Subcommand({"phantom"})
+    public void onPhantomCommand(Player sender) {
+        PhantomListener.togglePhantomSpawning();
+        boolean isDisabled = PhantomListener.isPhantomSpawningDisabled();
+
+        String status = isDisabled ? "&cDisabled" : "&aEnabled";
+        sender.sendMessage(TranslateUtil.translate("&lilacPhantom spawning is now " + status));
+    }
+
+    @Subcommand({"spawners"})
     public void onHelpCommand(Player sender) {
         sender.sendMessage(TranslateUtil.translate(
                 "&lilac&lLuxeria Spawners Help",
-                "&lilac/inc help &7- Shows this help menu",
-                "&lilac/inc getradius &7- Gets the spawner range",
-                "&lilac/inc setradius <int> &7- Sets the spawner range"
+                "&lilac/debug getradius &7- Gets the spawner range",
+                "&lilac/debug setradius <int> &7- Sets the spawner range"
         ));
     }
 
