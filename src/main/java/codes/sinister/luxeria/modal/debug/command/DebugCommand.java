@@ -18,7 +18,7 @@ public record DebugCommand() {
     public void onBaseCommand(Player sender) {
         sender.sendMessage(TranslateUtil.translate(
                 "&lilac&lLuxeria Debug Help",
-                "&lilac/debug &7- Shows the this help menu",
+                "&lilac/debug &7- Shows this help menu",
                 "&lilac/debug spawner &7- Shows the spawner help menu",
                 "&lilac/debug phantom &7- Enable/Disable Phantom Spawning"
         ));
@@ -33,10 +33,10 @@ public record DebugCommand() {
         sender.sendMessage(TranslateUtil.translate("&lilacPhantom spawning is now " + status));
     }
 
-    @Subcommand({"spawners"})
+    @Subcommand({"spawner"})
     public void onHelpCommand(Player sender) {
         sender.sendMessage(TranslateUtil.translate(
-                "&lilac&lLuxeria Spawners Help",
+                "&lilac&lLuxeria Spawner Help",
                 "&lilac/debug getradius &7- Gets the spawner range",
                 "&lilac/debug setradius <int> &7- Sets the spawner range"
         ));
